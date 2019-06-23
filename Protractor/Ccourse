@@ -1,0 +1,451 @@
+
+------------------------------------
+commands list
+Below are the mandatory commands to get started
+
+npm install -g protractor
+
+webdriver-manager update
+
+webdriver manager start
+
+----------------------------------
+
+Code download
+describe('Protractor baby steps',function() {  
+
+
+it('Open Angular js website',function() {
+
+
+
+
+
+//write your protractor raw code
+
+
+
+})
+
+ 
+
+
+//Each it block will be called as a spec
+
+
+
+it('close browswer', function() {
+
+
+
+// code to close browser
+})
+
+
+
+})
+
+
+
+------------------------------------------
+
+
+File reference
+exports.config = {
+seleniumAddress : 'http://localhost:4444/wd/hub',
+
+    specs: ['spec1.js'],
+ 
+}
+---------------------------------------
+
+Links to read more on promises
+https://spin.atomicobject.com/2014/12/17/asynchronous-testing-protractor-angular/
+
+https://www.sohamkamani.com/blog/2016/03/14/wrapping-your-head-around-async-programming/
+
+https://bridge360blog.com/2015/05/05/improving-protractor-tests-using-shared-functions-and-promises/
+
+------------------------------------
+code download
+/**
+ * 
+ */
+
+//print numbers from 1 to 100
+
+for(var i=0;i<=100;i=i+5)
+{
+console.log(i);
+}
+
+var j=1;
+while (j<5)
+{
+
+console.log(j)
+j++;
+}
+//***********************************************************************
+var k =10;
+
+do
+{
+console.log(k)
+k++;
+
+}while(k<6)
+
+Code download
+/**
+ * http://usejsdoc.org/
+ */
+function add(a,b)
+{
+return a+b;
+}
+
+console.log(add(2,3));
+console.log(add(5,3));
+
+console.log(add(4,3));
+
+console.log(add(2,3));
+console.log(add(2,6));
+console.log(add(2,4));
+console.log(add(2,2));
+console.log(add(2,9));
+console.log(add(2,12));
+
+var a=4;
+var b= ["hello","world","4","goodbye"];
+
+console.log(b.length+ "is the size of the array");
+for(var i=0;i<b.length;i++)
+{
+console.log(b[i]);
+}
+
+var c= new Array();
+
+c[0]= "goodbye";
+c[1]="4";
+c[2]="world";
+c[3]="hello";
+c[4]="bad";
+//length - 1 will be the maximum index
+console.log(c.length+ "is the size of the array called C");
+
+for(var i=0;i<c.length;i++)
+{
+console.log(c[i]);
+}
+console.log("Print the array numbers in reverse");
+for(var j=c.length-1;j>=0;j--)
+{
+console.log(c[j]); 
+}
+
+var name ="Rahul"; // String literal declaration
+
+console.log(name.charAt(3));
+
+var newname=name.concat("Shetty");
+console.log(newname);
+
+console.log(name.indexOf("u"));
+
+console.log(name.slice(1, 4));
+//starting index is inclusive - ending index is exclusive
+
+console.log(name.toUpperCase());
+
+var name ="Rahul ";
+
+console.log(name.trim());
+
+var name2=new String("Rahul");  // string object declaration
+
+Important Note
+JavaScript Topics are not yet over !! 
+
+There is one more important topic called "JavaScript Objects" which you will learn in detail in Section 9
+
+For now please continue in the order where videos are arranged and lets switch back to Protractor!
+
+
+-------------------------------
+
+Browser configuration file
+// An example configuration file
+exports.config = {
+  // The address of a running selenium server.
+  seleniumAddress: 'http://localhost:4444/wd/hub',
+ 
+  // Capabilities to be passed to the webdriver instance.
+  capabilities: {
+    browserName: 'chrome'
+  },
+ 
+  // Spec patterns are relative to the configuration file location passed
+  // to protractor (in this example conf.js).
+  // They may include glob patterns.
+  specs: ['example-spec.js'],
+ 
+ 
+};
+--------------------------------------
+Code download
+describe('Chain locators demo',function() {  
+
+
+it('Open Angular js website',function() {
+browser.get('http://juliemr.github.io/protractor-demo/');
+//repeater ,  chain locators, And css for identical tags
+element(by.model("first")).sendKeys("3");
+element(by.model("second")).sendKeys("5");
+
+element(by.id("gobutton")).click();
+
+element(by.repeater("result in memory")).element(by.css("td:nth-child(3)")).getText().then(function(text)
+{
+
+console.log(text);
+})
+
+
+// element(by.model("operator")).element(by.css("option:nth-child(4)")).click();
+
+
+
+
+
+
+
+})
+
+})
+-
+Resources for this lecture
+
+----------------------
+
+
+Code download
+describe('Protractor Element Demo',function() {  
+function Add(a,b)
+{
+element(by.model("first")).sendKeys(a);
+element(by.model("second")).sendKeys(b);
+
+element(by.id("gobutton")).click();
+
+}
+
+it('Locators',function() {
+
+/*browser.waitForAngularEnabled(false);
+browser.get("http://google.com");//non angular apps*/
+browser.get('http://juliemr.github.io/protractor-demo/');
+
+
+Add(2,3);
+Add(4,3);
+Add(8,3);
+Add(2,3);
+Add(9,3);
+Add(0,3);
+
+element.all(by.repeater("result in memory")).each(function(item)
+{
+item.element(by.css("td:nth-child(3)")).getText().then(function(text)
+{
+
+console.log(text);
+})
+
+})
+
+})
+
+
+})
+-------------
+Code download
+describe('Protractor Element Demo',function() {  
+function Calc(a,b,c)
+{
+element(by.model("first")).sendKeys(a);
+element(by.model("second")).sendKeys(b);
+
+//
+element.all(by.tagName("option")).each(function(item)
+{
+item.getAttribute("value").then(function(values)
+
+{
+
+if(values==c)
+{
+item.click();
+}
+
+})
+})
+
+element(by.id("gobutton")).click();
+}
+
+it('Locators',function() {
+
+/*browser.waitForAngularEnabled(false);
+browser.get("http://google.com");//non angular apps*/
+browser.get('http://juliemr.github.io/protractor-demo/');
+
+
+Calc(3,5,"MULTIPLICATION");
+
+Calc(3,5,"DIVISION");
+Calc(3,5,"DIVISION");
+Calc(10,6,"ADDITION");
+element.all(by.repeater("result in memory")).each(function(item)
+{
+item.element(by.css("td:nth-child(3)")).getText().then(function(text)
+{
+
+console.log(text);
+})
+
+})
+
+
+})
+
+
+})
+
+------------------
+
+Code download
+describe('Actions demo',function() {  
+
+
+it('Open Posse website',function() {
+//moving the mouse into that textbox
+//sendkeys
+//keyboard arrow
+//Keyboard enter
+browser.get("https://posse.com/");
+element(by.model("userInputQuery")).sendKeys("river");
+browser.actions().mouseMove(element(by.model("locationQuery")).sendKeys("london")).perform();
+
+
+
+browser.actions().sendKeys(protractor.Key.ARROW_DOWN).perform();
+browser.actions().sendKeys(protractor.Key.ENTER).perform().then(function()
+{
+
+browser.sleep(2000);
+
+expect(element.all(by.css("div[ng-mouseover*='onSearchResultOver']")).count()).toEqual(7);
+
+
+element.all(by.css("div[ng-mouseover*='onSearchResultOver']")).get(0).click();
+element(by.css("a[ng-href*='London/River Island']")).click().then(function()
+{
+browser.sleep(2000);
+})
+
+
+
+
+
+
+})
+
+})
+})
+
+----------------------------
+Code download
+describe('Protractor Alert steps',function() {  
+
+
+it('Open NonAngular js website Alerts',function() {
+
+browser.waitForAngularEnabled(false);
+browser.get("http://qaclickacademy.com/practice.php");
+element(by.id("confirmbtn")).click();
+
+browser.switchTo().alert().dismiss().then(function()
+
+{
+//10sec
+browser.sleep(5000);
+})
+
+
+
+
+
+
+
+
+
+
+})
+
+ 
+
+
+
+
+
+//browser.get() will hit url on the browser
+// write your raw protractor code
+
+//Each it block will be called as a spec
+
+
+
+it('close browswer', function() {
+
+
+
+// code to close browser
+})
+
+
+
+
+
+})
+//first parameter- Test suite name
+//Second parameter - function (function wil have all tests (it blocks)
+
+//first parameter- Test case  name
+
+----------------------------
+Code download
+describe('Protractor Alert steps',function() {  
+
+
+it('Open NonAngular js website Alerts',function() {
+
+//rahulonlinetutor@gmail.com
+
+browser.waitForAngularEnabled(false);
+
+browser.driver.manage().window().maximize();
+
+browser.get("http://qaclickacademy.com/practice.php");
+browser.switchTo().frame("courses-iframe");
+element(by.css("a[href*='sign_in']")).getText().then(function(text)
+{
+
+console.log(text);
+})
+
+
+--------------------
+
