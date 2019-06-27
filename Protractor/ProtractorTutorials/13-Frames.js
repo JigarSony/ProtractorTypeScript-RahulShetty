@@ -9,7 +9,7 @@ describe('Prortractor Alert Steps',function(){
 		browser.switchTo().frame('courses-iframe');
 		
 		element(by.css("a[href*='sign_in']")).getText().then(function(text){
-			consol.log(text)
+			console.log(text)
 		})
 		
 	})

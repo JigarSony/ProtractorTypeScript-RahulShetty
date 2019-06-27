@@ -9,7 +9,9 @@ exports.config = {
   //specs: ['9-Dropdown.js'],
   //specs:['10-Actions.js'],
   //specs:['12-Alert.js'],
-  specs:['13-Frames.js'],
+  //specs:['13-Frames.js'],
+  //specs:['14-Snychronization.js'],
+  specs:['15-PractiseExcersice.js'],
   capabilities: {
 	  'browserName': 'chrome'
 	  //'browserName': 'firefox'

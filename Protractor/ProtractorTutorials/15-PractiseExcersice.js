@@ -6,7 +6,7 @@ describe('Protractor Alert steps',function(){
 		
 		element.all(by.tagName("app-card")).each(function(item) {
 			item.element(by.css("h4[class*='card-title'] a")).getText().then(function(text) {
-				if(text=="Samsung Note 8"){
+				if(text==product){
 					//click add to card
 					item.element(by.css("button[class*='btn btn-info']")).click();
 				}
@@ -15,6 +15,18 @@ describe('Protractor Alert steps',function(){
 //				}
 			})
 		})
+	}
+	
+	function getPrice(){
+		for(var i=1;i<=3;i++){
+			element(by.css("tbody tr:nth-child("+i+") td:nth-child(4)")).getText().then(function(text) {
+				console.log(text);
+				
+				var price1 = text.split(" ")
+				console.log(price1[1]);
+				browser.sleep(5000);
+			})
+		}
 	}
 	
 	
@@ -51,22 +63,68 @@ describe('Protractor Alert steps',function(){
 		
 		element(by.linkText("Shop")).click();
 		
-			selectItem("Samsung Note 8");
 			selectItem("iphone X");
+			selectItem("Samsung Note 8");
+			selectItem("Nokia Edge");
 		
-		element(by.partialLinkText("Checkout")).getText().then(function(text) {
+			element(by.partialLinkText("Checkout")).getText().then(function(text) {
 			console.log(text);
 			
-//			var result = text.split("(");
-//			
-//			var x = Number(result[1].trim().charAt(0));
+			var result = text.split("(");
+			
+			var x = Number(result[1].trim().charAt(0));
 //			
 //			var y = x+1;
 //			
 //			console.log(y);
 			
-			expect(result[1].trim().charAt(0)).toBe("2");
+			expect(result[1].trim().charAt(0)).toBe("3");
 		})
+		
+		element(by.partialLinkText("Checkout")).click();
+		
+			//getPrice();
+			var price11;
+			var price21;
+			var price31;
+			element(by.css("tbody tr:nth-child(1) td:nth-child(4)")).getText().then(function(text) {
+				console.log(text);
+				
+				var price1 = text.split(" ")
+				console.log(price1[1]);
+				price11 = price1[1];
+			})
+			
+			element(by.css("tbody tr:nth-child(2) td:nth-child(4)")).getText().then(function(text) {
+				console.log(text);
+				
+				var price2 = text.split(" ")
+				console.log(price2[1]);
+				price21 = price2[1];
+			})
+			
+			element(by.css("tbody tr:nth-child(3) td:nth-child(4)")).getText().then(function(text) {
+				console.log(text);
+				
+				var price3 = text.split(" ")
+				console.log(price3[1]);
+				price31 = price3[1];
+			})
+			
+			var total = price11+price21+price31;
+			console.log("Hi");
+			console.log(total);
+			
+			var actualTotal;
+			element(by.css(" tbody tr:nth-child(4) strong")).getText().then(function(text){
+				var actotal = text.split(" ")
+				console.log(actotal[1]);
+				//actotal[1] == actualTotal;
+				//console.log(actualTotal);
+			})
+			
+			//expect(total).toBe(actualTotal);
+			
 		
 	})
 })
