@@ -1,0 +1,75 @@
+To install protractor:: npm install -g protractor
+
+To Update/Start WebDriver::
+webdriver-manager update
+webdriver-manager start
+
+To install typescript
+npm install -g typescript
+
+To create Package.json
+npm init
+
+To convert TS to JS
+tsc 
+
+To enter in converted js file and run
+protractor JSFiles/configuration.js
+
+To initialize the configuration rts file
+tsc --init
+
+Officials
+https://www.protractortest.org/#/
+https://www.protractortest.org/#/api
+
+Protractor site
+
+Reference
+
+Git
+https://github.com/angular/protractor/blob/5.4.1/exampleTypescript/tsconfig.json
+
+
+
+https://www.protractortest.org/#/control-flow
+https://github.com/SeleniumHQ/selenium/issues/2969
+https://www.protractortest.org/#/api-overview
+http://fredkschott.com/post/2014/02/npm-no-longer-defaults-to-tildes/
+https://stackoverflow.com/questions/22343224/whats-the-difference-between-tilde-and-caret-in-package-json
+https://github.com/cucumber/cucumber-js
+https://github.com/protractor-cucumber-framework/protractor-cucumber-framework
+https://github.com/angular/protractor/tree/5.4.1
+https://www.protractortest.org/#/frameworks
+http://www.protractortest.org/#/api?view=ElementArrayFinder
+https://www.protractortest.org/#/locators
+https://www.protractortest.org/#/tutorial
+https://github.com/angular/protractor/blob/5.4.1/exampleTypescript/package.json
+https://www.protractortest.org/#/toc
+
+https://github.com/angular/protractor/
+
+Practice WebSites
+
+http://www.itgeared.com/demo/1506-ajax-loading.html
+https://qaclickacademy.github.io/protocommerce/shop
+https://juliemr.github.io/protractor-demo/
+http://posse.com/
+http://www.qaclickacademy.com/practice.php
+
+Package.JSON
+To change run commands
+
+"test": "echo \"Error: no test specified\" && exit 1"
+"test": "protractor JSFiles/configuration.js"
+
+npm run test
+
+"protractor": "./node_modules/protractor/built/cli.js"
+
+
+"webdriver-update": "./node_modules/.bin/webdriver-manager update"
+
+npm run webdriver-update
+
+https://github.com/protractor-cucumber-framework/protractor-cucumber-framework
